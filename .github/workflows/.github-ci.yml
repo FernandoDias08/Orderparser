@@ -21,5 +21,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: 
+          tags:
+            fernandodias08/orderparser:${{github.run_number}}
             fernandodias08/orderparser:latest
