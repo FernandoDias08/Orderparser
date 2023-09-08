@@ -23,4 +23,3 @@ jobs:
           push: true
           tags:
             fernandodias08/orderparser:${{github.run_number}}
-            fernandodias08/orderparser:latest
