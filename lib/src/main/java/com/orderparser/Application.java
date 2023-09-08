@@ -1,5 +1,6 @@
 package com.orderparser;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -17,32 +18,35 @@ import com.orderparser.service.imp.DataWriter;
 
 public class Application {
 
-    private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
 
-    public static void main(String[] args) {
-	String prefixo = "data_1";
-	String arquivoSaida = "pedidos.json";
+	public static void main(String[] args) {
+		List<String> prefixosArquivos = List.of("data_1", "data_2");
+		String arquivoSaida = "pedidos.json";
 
-	try {
+		try {
 
-	    DataReader leitor = new ParserService();
-	    DataConverter conversor = new JsonConverterService();
-	    DataWriter escritor = new FileWriterService();
+			DataReader leitor = new ParserService();
+			DataConverter conversor = new JsonConverterService();
+			DataWriter escritor = new FileWriterService();
+			List<Map<String, Object>> dadosMapeados = new ArrayList<>();
 
-	    List<Map<String, Object>> dadosMapeados = leitor.lerDados(prefixo);
+			for (String prefixo : prefixosArquivos) {
 
-	    if (dadosMapeados.isEmpty()) {
-		throw new OrderparserException("Nenhum dado encontrado nos arquivos.");
-	    }
+				dadosMapeados.addAll(leitor.lerDados(prefixo));
+			}
 
-	    JSONArray dadosJson = conversor.converter(dadosMapeados);
-	    escritor.escreverArquivoJson(dadosJson, arquivoSaida);
-	    
+			if (dadosMapeados.isEmpty()) {
+				throw new OrderparserException("Nenhum dado encontrado nos arquivos.");
+			}
 
-	    LOGGER.log(Level.INFO, "Dados --> {0}", dadosJson);
+			JSONArray dadosJson = conversor.converter(dadosMapeados);
+			escritor.escreverArquivoJson(dadosJson, arquivoSaida);
 
-	} catch (Exception e) {
-	    e.printStackTrace();
+			LOGGER.log(Level.INFO, "Dados --> {0}", dadosJson);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-    }
 }
