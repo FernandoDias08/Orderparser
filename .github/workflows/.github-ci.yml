@@ -18,7 +18,7 @@ jobs:
       - name: Construção da imagem Docker
         uses: docker/build-push-action@v4.2.1
         with:
-          context: ./lib
+          context: .
           file: Dockerfile
           push: true
           tags: 
