@@ -1,0 +1,21 @@
+name: CI-CD
+
+on: 
+  push:
+    branches: ["master"]
+
+jobs:
+  CI:
+    runs-on: ubuntu-lastest
+
+    steps:
+      - uses: actions/checkout@v4.0.0
+      - name: Construção da imagem Docker
+        uses: docker/build-push-action@v4.2.1
+        with:
+          context: .
+          file: .Dockerfile
+          push: true
+          tags: 
+            fernandodias08/orderparser:v1
+            fernandodias08/orderparser:latest
