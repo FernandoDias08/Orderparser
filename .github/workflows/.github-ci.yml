@@ -13,8 +13,8 @@ jobs:
       - name: Construção da imagem Docker
         uses: docker/build-push-action@v4.2.1
         with:
-          context: .
-          file: .Dockerfile
+          context: ./lib
+          file: Dockerfile
           push: true
           tags: 
             fernandodias08/orderparser:latest
