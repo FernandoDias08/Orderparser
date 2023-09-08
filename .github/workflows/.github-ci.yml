@@ -17,5 +17,4 @@ jobs:
           file: .Dockerfile
           push: true
           tags: 
-            FernandoDias08/Orderparser:v1
-            FernandoDias08/Orderparser:latest
+            fernandodias08/orderparser:latest
