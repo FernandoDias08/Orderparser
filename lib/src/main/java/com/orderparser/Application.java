@@ -21,32 +21,39 @@ public class Application {
 	private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
 
 	public static void main(String[] args) {
-		List<String> prefixosArquivos = List.of("data_1", "data_2");
-		String arquivoSaida = "pedidos.json";
+		while (true) {
+			List<String> prefixosArquivos = List.of("data_1", "data_2");
+			String arquivoSaida = "pedidos.json";
 
-		try {
+			try {
 
-			DataReader leitor = new ParserService();
-			DataConverter conversor = new JsonConverterService();
-			DataWriter escritor = new FileWriterService();
-			List<Map<String, Object>> dadosMapeados = new ArrayList<>();
+				// UMA HORA DE PRAZO
+				long tempoDeEsperaEmMilissegundos = 3600L * 1000;
+				DataReader leitor = new ParserService();
+				DataConverter conversor = new JsonConverterService();
+				DataWriter escritor = new FileWriterService();
+				List<Map<String, Object>> dadosMapeados = new ArrayList<>();
 
-			for (String prefixo : prefixosArquivos) {
+				for (String prefixo : prefixosArquivos) {
 
-				dadosMapeados.addAll(leitor.lerDados(prefixo));
+					dadosMapeados.addAll(leitor.lerDados(prefixo));
+				}
+
+				if (dadosMapeados.isEmpty()) {
+					throw new OrderparserException("Nenhum dado encontrado nos arquivos.");
+				}
+
+				JSONArray dadosJson = conversor.converter(dadosMapeados);
+				escritor.escreverArquivoJson(dadosJson, arquivoSaida);
+
+				LOGGER.log(Level.INFO, "Dados --> {0}", dadosJson);
+
+				Thread.sleep(tempoDeEsperaEmMilissegundos);
+
+			} catch (InterruptedException e) {
+				LOGGER.log(Level.WARNING, "Thread interrompida!", e);
+				Thread.currentThread().interrupt();
 			}
-
-			if (dadosMapeados.isEmpty()) {
-				throw new OrderparserException("Nenhum dado encontrado nos arquivos.");
-			}
-
-			JSONArray dadosJson = conversor.converter(dadosMapeados);
-			escritor.escreverArquivoJson(dadosJson, arquivoSaida);
-
-			LOGGER.log(Level.INFO, "Dados --> {0}", dadosJson);
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 }
