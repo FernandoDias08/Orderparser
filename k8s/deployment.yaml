@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderparser-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: orderparser
+  template:
+    metadata:
+      labels:
+        app: orderparser
+    spec:
+      containers:
+        - name: orderparser-container
+          image: fernandodias08/orderparser
+          ports:
+            - containerPort: 8080
