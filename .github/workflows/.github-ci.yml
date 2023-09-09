@@ -23,3 +23,21 @@ jobs:
           push: true
           tags:
             fernandodias08/orderparser:${{github.run_number}}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4.0.0
+      - name: Definindo o context
+        uses: Azure/k8s-set-context@v3.0
+        with:
+          method: kubeconfig
+          kubeconfig: ${{secrets.K8S_CONFIG}}
+
+
+
+
+
+
+          
