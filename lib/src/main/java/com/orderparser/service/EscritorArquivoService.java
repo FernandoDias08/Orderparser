@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import com.orderparser.exception.OrderparserException;
 import com.orderparser.service.imp.DataWriter;
 
-public class FileWriterService implements DataWriter {
+public class EscritorArquivoService implements DataWriter {
 
     @Override
     public void escreverArquivoJson(JSONArray jsonArray, String nomeArquivo) {

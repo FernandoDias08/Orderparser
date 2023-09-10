@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 
 import com.orderparser.exception.OrderparserException;
-import com.orderparser.service.FileWriterService;
-import com.orderparser.service.JsonConverterService;
+import com.orderparser.service.EscritorArquivoService;
+import com.orderparser.service.ConversorJsonService;
 import com.orderparser.service.ParserService;
 import com.orderparser.service.imp.DataConverter;
 import com.orderparser.service.imp.DataReader;
@@ -30,8 +30,8 @@ public class Application {
 				// UMA HORA DE PRAZO
 				long tempoDeEsperaEmMilissegundos = 3600L * 1000;
 				DataReader leitor = new ParserService();
-				DataConverter conversor = new JsonConverterService();
-				DataWriter escritor = new FileWriterService();
+				DataConverter conversor = new ConversorJsonService();
+				DataWriter escritor = new EscritorArquivoService();
 				List<Map<String, Object>> dadosMapeados = new ArrayList<>();
 
 				for (String prefixo : prefixosArquivos) {

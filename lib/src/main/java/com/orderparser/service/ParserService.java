@@ -29,10 +29,10 @@ public class ParserService implements DataReader {
 	private Map<String, Object> mapearDados(String linha) {
 		Map<String, Object> map = new HashMap<>();
 		map.put(OrderColumnsEnum.USER_ID.getValue(), linha.substring(0, 10).strip());
-		map.put(OrderColumnsEnum.NAME.getValue(), linha.substring(11, 55).stripLeading());
-		map.put(OrderColumnsEnum.ORDER_ID.getValue(), linha.substring(56, 65).strip());
-		map.put(OrderColumnsEnum.PRODUCT_ID.getValue(), linha.substring(66, 76).strip());
-		map.put(OrderColumnsEnum.VALUE.getValue(), linha.substring(77, 87).stripLeading());
+		map.put(OrderColumnsEnum.NAME.getValue(), linha.substring(10, 55).stripLeading());
+		map.put(OrderColumnsEnum.ORDER_ID.getValue(), linha.substring(55, 65).strip());
+		map.put(OrderColumnsEnum.PRODUCT_ID.getValue(), linha.substring(65, 76).strip());
+		map.put(OrderColumnsEnum.VALUE.getValue(), linha.substring(76, 87).stripLeading());
 		map.put(OrderColumnsEnum.DATE.getValue(), linha.substring(87).strip());
 		return map;
 	}

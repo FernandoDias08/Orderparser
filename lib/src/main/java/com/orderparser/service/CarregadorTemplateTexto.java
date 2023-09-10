@@ -32,7 +32,7 @@ public class CarregadorTemplateTexto implements CarregadorTemplate {
 			int linhaAtual = 0;
 
 			while ((line = reader.readLine()) != null) {
-				if (linhaAtual > 0) {
+				if (linhaAtual >= 0) {
 					linhas.add(line);
 				}
 				linhaAtual++;

@@ -11,7 +11,7 @@ import org.json.JSONArray;
 import com.orderparser.enums.OrderColumnsEnum;
 import com.orderparser.service.imp.DataConverter;
 
-public class JsonConverterService implements DataConverter {
+public class ConversorJsonService implements DataConverter {
 
     @Override
     public JSONArray converter(List<Map<String, Object>> listaDeMapas) {
