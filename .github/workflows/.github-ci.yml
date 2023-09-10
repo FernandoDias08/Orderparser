@@ -5,9 +5,20 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
+    steps:
+      - uses: actions/checkout@v4.0.0
+      - name: Rodar Gradle Test
+        uses: actions/checkout@v4.0.0
+      - name: Gradle Test
+        run: |
+          gradle clean test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
     steps:
       - uses: actions/checkout@v4.0.0
       - name: Autenticação no Docker Hub
