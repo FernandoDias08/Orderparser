@@ -37,12 +37,12 @@ class ParserServiceTest {
         assertEquals(1, dados.size());
 
         Map<String, Object> primeiroRegistro = dados.get(0);
-        assertEquals("0000000070", primeiroRegistro.get(OrderColumnsEnum.USER_ID.getValue()));
-        assertEquals("Palmer Prosacco", primeiroRegistro.get(OrderColumnsEnum.NAME.getValue()));
-        assertEquals("0000000753", primeiroRegistro.get(OrderColumnsEnum.ORDER_ID.getValue()));
-        assertEquals("0000000003", primeiroRegistro.get(OrderColumnsEnum.PRODUCT_ID.getValue()));
-        assertEquals("1836.74", primeiroRegistro.get(OrderColumnsEnum.VALUE.getValue()));
-        assertEquals("20210308", primeiroRegistro.get(OrderColumnsEnum.DATE.getValue()));
+        assertEquals("0000000075", primeiroRegistro.get(OrderColumnsEnum.USER_ID.getValue()));
+        assertEquals("Bobbie Batz", primeiroRegistro.get(OrderColumnsEnum.NAME.getValue()));
+        assertEquals("000000798", primeiroRegistro.get(OrderColumnsEnum.ORDER_ID.getValue()));
+        assertEquals("000000002", primeiroRegistro.get(OrderColumnsEnum.PRODUCT_ID.getValue()));
+        assertEquals("1578.57", primeiroRegistro.get(OrderColumnsEnum.VALUE.getValue()));
+        assertEquals("20211116", primeiroRegistro.get(OrderColumnsEnum.DATE.getValue()));
 
     }
     
