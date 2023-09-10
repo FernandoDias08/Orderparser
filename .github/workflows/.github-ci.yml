@@ -12,15 +12,9 @@ jobs:
       - uses: actions/checkout@v4.0.0
       - name: Rodar Gradle Test
         uses: actions/checkout@v4.0.0
-        with:
-          repository: actions/gradle/wrapper-action
-          path: .github/actions/gradle
-          ref: v4
       - name: Gradle Test
         run: |
-          cd .github/actions/gradle
-          chmod +x gradlew
-          ./gradlew clean test
+          gradle clean test
 
   build:
     runs-on: ubuntu-latest
