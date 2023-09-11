@@ -15,6 +15,9 @@ Sistema para conversão de arquivo txt em formato json
 - Por padrão, o Orderparser adota a convenção de commits descrita no link:
  https://www.conventionalcommits.org/en/v1.0.0/
 
+## Testes
+- Para realização de testes unitários, foi utilizado o JUnit 5 com Mockito, cobrindo 100% da implementação das classes de Service.
+
 ## Executando o sistema local - Opção 1
 - Para executar o projeto localmente, será necessário ter instalado o JAVA versão 17 ou superior e o Gradle (para realizar o build)
 - Com o JAVA e o Gradle já instalados, basta entrar na pasta /lib do projeto e executar o comando:
